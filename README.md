@@ -26,3 +26,9 @@ const nextConfig = {
 export default nextConfig;
 
 ```
+
+# 2025.03.25
+
+> 백엔드 서버 세팅 완료
+
+<img src="https://github.com/user-attachments/assets/39ff770b-3879-4dc9-a0b6-e54a1a9f63b2" width="300" />
