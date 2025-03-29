@@ -8,7 +8,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
+  padding: 20px;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -30,6 +30,8 @@
 
 .cover_img_container img {
   z-index: 1;
+  max-height: 350px;
+  height: 100%;
 }
 
 .title {

@@ -5,37 +5,28 @@ import { ReactNode, useEffect, useState } from "react";
 import style from "./index.module.css";
 import { useRouter } from "next/router";
 
-import AllMovieItem from "@/components/all-movie-item";
+import MovieItem from "@/components/movie-item";
+import { GetServerSidePropsContext, InferGetServerSidePropsType } from "next";
+import fetchMovies from "@/lib/fetch-all-movies";
 
-export default function Page() {
-  const [filteredMovie, setFilteredMovie] = useState(movies);
-  const router = useRouter();
+export const getServerSideProps = async (
+  context: GetServerSidePropsContext
+) => {
+  const q = context.query.q;
+  const searchResults = await fetchMovies(q as string);
+  return {
+    props: { searchResults },
+  };
+};
 
-  // 쿼리스트링
-  const { q } = router.query;
-
-  useEffect(() => {
-    //쿼리스트링이 있다는건 검색결과가 있다는 것!
-    const filtered = movies.filter((movie) =>
-      movie.title.includes(q as string)
-    );
-    setFilteredMovie(filtered);
-  }, [q]);
-
+export default function Page({
+  searchResults,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) {
   return (
     <div className={style.container}>
-      {filteredMovie.length > 0 ? (
-        filteredMovie.map((movie) => <AllMovieItem key={movie.id} {...movie} />)
-      ) : (
-        <h1
-          style={{
-            display: "flex",
-            justifyContent: "center",
-          }}
-        >
-          검색 결과가 없습니다.😭
-        </h1>
-      )}
+      {searchResults.map((movie) => (
+        <MovieItem key={movie.id} {...movie} />
+      ))}
     </div>
   );
 }
