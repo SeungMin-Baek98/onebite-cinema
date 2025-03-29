@@ -39,3 +39,9 @@ export default nextConfig;
 
 - GlobalLayout 및 SearchableLayout 컴포넌트 생성
 - "/" , "/search" : 서치박스 나타내기
+
+# 2025.03.28
+
+> 임시 데이터를 이용한 메인 화면 UI , 검색 결과 UI , 상세 페이지 UI 구현 완료
+
+1. 메인 화면 UI

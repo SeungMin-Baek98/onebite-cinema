@@ -9,6 +9,7 @@ export default function SearchableLayout({
 }) {
   const [search, setSearch] = useState("");
   const router = useRouter();
+
   const q = router.query.q as string;
 
   useEffect(() => {
@@ -31,6 +32,7 @@ export default function SearchableLayout({
       onSubmit();
     }
   };
+
   return (
     <div>
       <div className={style.searchbar_container}>
@@ -42,6 +44,7 @@ export default function SearchableLayout({
         />
         <button onClick={onSubmit}>검색</button>
       </div>
+
       {children}
     </div>
   );
