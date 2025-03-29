@@ -1,11 +1,11 @@
-import SearchableLayout from "@/components/searchable-layout";
 import style from "./index.module.css";
-import { ReactNode } from "react";
-
 import fetchMovies from "@/lib/fetch-all-movies";
-import { InferGetServerSidePropsType } from "next";
-import fetchRandomMovie from "@/lib/fetch-random-movie";
 import MovieItem from "@/components/movie-item";
+import fetchRandomMovie from "@/lib/fetch-random-movie";
+import SearchableLayout from "@/components/searchable-layout";
+
+import { ReactNode } from "react";
+import { InferGetServerSidePropsType } from "next";
 
 export const getServerSideProps = async () => {
   const [allMovies, recoMovies] = await Promise.all([

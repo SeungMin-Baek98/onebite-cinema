@@ -1,8 +1,9 @@
-import GlobalLayout from "@/components/global-layout";
 import "@/styles/globals.css";
+import GlobalLayout from "@/components/global-layout";
+
 import { NextPage } from "next";
-import type { AppProps } from "next/app";
 import { ReactNode } from "react";
+import type { AppProps } from "next/app";
 
 type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactNode) => ReactNode;

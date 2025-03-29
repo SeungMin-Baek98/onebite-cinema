@@ -1,13 +1,10 @@
+import style from "./index.module.css";
+import MovieItem from "@/components/movie-item";
+import fetchMovies from "@/lib/fetch-all-movies";
 import SearchableLayout from "@/components/searchable-layout";
 
-import movies from "@/mock/mock.json";
-import { ReactNode, useEffect, useState } from "react";
-import style from "./index.module.css";
-import { useRouter } from "next/router";
-
-import MovieItem from "@/components/movie-item";
+import { ReactNode } from "react";
 import { GetServerSidePropsContext, InferGetServerSidePropsType } from "next";
-import fetchMovies from "@/lib/fetch-all-movies";
 
 export const getServerSideProps = async (
   context: GetServerSidePropsContext

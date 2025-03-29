@@ -1,6 +1,7 @@
-import { GetServerSidePropsContext, InferGetServerSidePropsType } from "next";
 import style from "./[id].module.css";
 import fetchOneMovie from "@/lib/fetch-one-movie";
+
+import { GetServerSidePropsContext, InferGetServerSidePropsType } from "next";
 
 export const getServerSideProps = async (
   context: GetServerSidePropsContext
