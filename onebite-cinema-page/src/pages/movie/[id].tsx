@@ -1,3 +1,4 @@
+import fetchMovies from "@/lib/fetch-all-movies";
 import style from "./[id].module.css";
 import fetchOneMovie from "@/lib/fetch-one-movie";
 
@@ -33,13 +34,12 @@ export const getServerSideProps = async (
 // fallback: true인 경우, paths에 없는 경로는 처음 요청 시 서버에서 HTML을 생성하고,
 // 그 이후 캐싱되어 정적으로 렌더링된다.
 
-export const getStaticPaths = () => {
+export const getStaticPaths = async () => {
+  const movieIds = await fetchMovies();
   return {
-    paths: [
-      { params: { id: "1" } },
-      { params: { id: "2" } },
-      { params: { id: "3" } },
-    ],
+    paths: movieIds.map((movie) => ({
+      params: { id: movie.id.toString() },
+    })),
     fallback: true,
   };
 };
