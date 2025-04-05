@@ -76,4 +76,10 @@ export default nextConfig;
 
 > Onebite-cinema App Router버전 설치 완료
 >
-> 전역 레이아웃(글로벌 레이아웃) 및 페이지별 레이아웃(with-searchbar)설정
+> 전역 레이아웃(글로벌 레이아웃) 및 페이지별 레이아웃(with-searchbar) <- Routes Group 설정
+
+# 2025.04.04
+
+> Onebite-cinema 컴포넌트 폴더생성 및 서치바 파일 생성
+> useSearchParams() 훅을 이용하여 쿼리스트링 (q) 받아오기
+> [useRouterParams() 공식문서]()

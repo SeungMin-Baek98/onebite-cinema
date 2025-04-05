@@ -71,14 +71,14 @@ export default function Home({
               <MovieItem key={movie.id} {...movie} />
             ))}
           </div>
-        </section>
-        <section className={style.all_movie_section}>
-          <h3>등록된 모든 영화</h3>
-          <div>
-            {allMovies.map((movie) => (
-              <MovieItem key={movie.id} {...movie} />
-            ))}
-          </div>
+          <section className={style.all_movie_section}>
+            <h3>등록된 모든 영화 : 안일주</h3>
+            <div>
+              {allMovies.map((movie) => (
+                <MovieItem key={movie.id} {...movie} />
+              ))}
+            </div>
+          </section>
         </section>
       </div>
     </>
