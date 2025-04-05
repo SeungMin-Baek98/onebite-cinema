@@ -81,5 +81,7 @@ export default nextConfig;
 # 2025.04.04
 
 > Onebite-cinema 컴포넌트 폴더생성 및 서치바 파일 생성
+>
 > useSearchParams() 훅을 이용하여 쿼리스트링 (q) 받아오기
-> [useRouterParams() 공식문서]()
+>
+> 👉[useRouterParams() 공식문서](https://nextjs.org/docs/app/api-reference/functions/use-search-params)
