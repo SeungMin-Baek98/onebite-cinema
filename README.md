@@ -111,3 +111,7 @@ export default nextConfig;
 3. 영화 상세 UI
 
    <img src="https://github.com/user-attachments/assets/2008695e-ade4-4fd3-855c-f168de83ff26" width="300px" />
+
+# 2025.04.08
+
+> App Router 데이터 패칭 및 각각의 캐싱 옵션 설정 완료

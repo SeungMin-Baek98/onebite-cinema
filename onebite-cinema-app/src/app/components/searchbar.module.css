@@ -5,13 +5,18 @@
 
 .container > input {
   flex: 1;
-  padding: 20px;
+  padding: 15px;
   border: 1px solid rgb(70, 70, 70);
   border-radius: 5px;
-  color: rgb(70, 70, 70);
-  background-color: rgb(0, 0, 0);
+  color: white;
+  background-color: black;
   &:focus {
-    outline-color: rgb(0, 0, 0);
+    outline: 2px solid rgb(229, 9, 20);
+  }
+
+  &::placeholder {
+    color: white;
+    opacity: 0.8;
   }
 }
 
@@ -22,7 +27,12 @@
   cursor: pointer;
   background-color: rgb(70, 70, 70);
   color: white;
+  transition: background-color 0.4s ease-in-out;
   &:focus {
-    outline-color: rgb(0, 0, 0);
+    outline: 2px solid rgb(229, 9, 20);
+  }
+  &:hover {
+    background-color: rgb(229, 9, 20);
+    color: black;
   }
 }
