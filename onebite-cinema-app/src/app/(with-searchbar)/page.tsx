@@ -1,7 +1,7 @@
+import { MovieData } from "@/types";
+
 import MovieItem from "../components/movie-item";
 import style from "./page.module.css";
-
-import { MovieData } from "@/types";
 
 // 모든 영화
 async function AllMovies() {

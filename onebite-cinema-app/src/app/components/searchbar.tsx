@@ -1,9 +1,9 @@
 "use client";
 
-import style from "./searchbar.module.css";
-
 import { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
+
+import style from "./searchbar.module.css";
 
 export default function Searchbar() {
   const [search, setSearch] = useState("");
