@@ -116,6 +116,10 @@ export default nextConfig;
 
 > App Router 데이터 패칭 및 각각의 캐싱 옵션 설정 완료
 
-# 2024504.09
+# 2025.04.09
 
 > 페이지 별 Full Route Cache 적용 완료!!
+
+# 2025.04.10
+
+> Page Streaming 적용완료 (/search)

@@ -1,0 +1,17 @@
+@keyframes blur {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.loading_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: blur 1.5s ease-in-out infinite;
+}

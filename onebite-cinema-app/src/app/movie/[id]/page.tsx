@@ -1,7 +1,7 @@
+import style from "./page.module.css";
+
 import { MovieData } from "@/types";
 import { notFound } from "next/navigation";
-
-import style from "./page.module.css";
 
 export async function generateStaticParams() {
   try {

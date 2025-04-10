@@ -1,15 +1,16 @@
-import { MovieData } from "@/types";
-
 import MovieItem from "@/app/components/movie-item";
 import style from "./page.module.css";
+
+import { MovieData } from "@/types";
+import { delay } from "@/app/util/delay";
 
 export default async function Page({
   searchParams,
 }: {
   searchParams: Promise<{ q: string }>;
 }) {
+  await delay(3000);
   const { q } = await searchParams;
-
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_API_SERVER_URL}/movie/search?q=${q}`
   );
