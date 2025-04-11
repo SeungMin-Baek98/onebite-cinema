@@ -123,3 +123,12 @@ export default nextConfig;
 # 2025.04.10
 
 > Page Streaming 적용완료 (/search)
+
+# 2025.04.11
+
+> Skeleton UI 적용 완료 (react-loading-skeleton 라이브러리 사용)
+>
+> [react-loadig-skeleton 라이브러리](https://www.npmjs.com/package/react-loading-skeleton)
+>
+> 영화 검색 -> 제목으로만 검색 되게 변경. (repalce(`/ /g`, "")메서드 사용하여 `/ /g`정규식 사용으로 공백 다 제거)
+> ex) 캡틴 아메리카 -> 캡틴아메리카로 검색 완료!

@@ -1,15 +1,17 @@
-import MovieItem from "@/app/components/movie-item";
 import style from "./page.module.css";
+import MovieItem from "@/app/components/movie-item";
+import RecoMovieItemSkeleton from "@/app/skeleton/reco-movie-item-skeleton";
 
 import { MovieData } from "@/types";
 import { delay } from "@/app/util/delay";
+import { Suspense } from "react";
 
-export default async function Page({
+async function SearchResult({
   searchParams,
 }: {
-  searchParams: Promise<{ q: string }>;
+  searchParams: Promise<{ q?: string }>;
 }) {
-  await delay(3000);
+  await delay(1500);
   const { q } = await searchParams;
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_API_SERVER_URL}/movie/search?q=${q}`
@@ -21,7 +23,9 @@ export default async function Page({
 
   const movie: MovieData[] = await response.json();
 
-  const filteredMovie = movie.filter((movie) => movie.title.includes(q));
+  const filteredMovie = movie.filter((movie) =>
+    movie.title.replace(/ /g, "").includes(q as string)
+  );
 
   return (
     <div className={style.container}>
@@ -30,6 +34,21 @@ export default async function Page({
       ) : (
         <div>찾으시는 영화가 없습니다.</div>
       )}
+    </div>
+  );
+}
+
+export default async function Page({
+  searchParams,
+}: {
+  searchParams: Promise<{ q: string }>;
+}) {
+  const { q } = await searchParams;
+  return (
+    <div style={{ marginTop: "15px" }}>
+      <Suspense key={q || ""} fallback={<RecoMovieItemSkeleton count={3} />}>
+        <SearchResult searchParams={searchParams || ""} />
+      </Suspense>
     </div>
   );
 }
