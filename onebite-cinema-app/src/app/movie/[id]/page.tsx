@@ -1,7 +1,10 @@
 import style from "./page.module.css";
 
-import { MovieData } from "@/types";
+import ReviewItem from "@/app/components/review-item";
+import ReviewEditor from "@/app/components/review-editor";
+
 import { notFound } from "next/navigation";
+import { MovieData, ReviewData } from "@/types";
 
 export async function generateStaticParams() {
   try {
@@ -28,14 +31,9 @@ export async function generateStaticParams() {
   }
 }
 
-export default async function Page({
-  params,
-}: {
-  params: Promise<{ id: string }>;
-}) {
-  const { id } = await params;
+async function MovieDetail({ movieId }: { movieId: string }) {
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_SERVER_URL}/movie/${id}`,
+    `${process.env.NEXT_PUBLIC_API_SERVER_URL}/movie/${movieId}`,
     { cache: "force-cache" }
   );
 
@@ -58,20 +56,54 @@ export default async function Page({
     description,
   } = movie;
   return (
-    <div className={style.container}>
+    <section>
       <div
-        style={{ backgroundImage: `url('${posterImgUrl}')` }}
         className={style.cover_img_container}
+        style={{ backgroundImage: `url('${posterImgUrl}')` }}
       >
-        <img src={posterImgUrl} />
+        <img src={posterImgUrl} alt={`${title} 포스터`} />
       </div>
-      <div className={style.title}>{title}</div>
-      <div>
-        {releaseDate} / {genres.join(", ")} / {runtime}
+      <h1 className={style.title}>{title}</h1>
+      <div className={style.meta}>
+        {releaseDate} / {genres.join(", ")} / {runtime}분
       </div>
-      <div>{company}</div>
-      <div className={style.subtitle}>{subTitle}</div>
-      <div className={style.description}>{description}</div>
+      <div className={style.meta}>{company}</div>
+      <h2 className={style.subtitle}>{subTitle}</h2>
+      <p className={style.description}>{description}</p>
+    </section>
+  );
+}
+
+async function ReviewList({ movieId }: { movieId: string }) {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_API_SERVER_URL}/review/movie/${movieId}`
+  );
+
+  if (!response.ok) {
+    throw new Error(`Review fetch failed!! ${response.statusText}`);
+  }
+
+  const reviews: ReviewData[] = await response.json();
+  return (
+    <section>
+      {reviews.map((review) => (
+        <ReviewItem key={review.id} {...review} />
+      ))}
+    </section>
+  );
+}
+
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const { id } = await params;
+  return (
+    <div className={style.container}>
+      <MovieDetail movieId={id} />
+      <ReviewEditor movieId={id} />
+      <ReviewList movieId={id} />
     </div>
   );
 }

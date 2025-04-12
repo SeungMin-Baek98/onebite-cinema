@@ -43,6 +43,8 @@ async function RecoMovies() {
   return movies.map((movie) => <MovieItem key={movie.id} {...movie} />);
 }
 
+export const dynamic = "force-dynamic";
+
 export default function Home() {
   return (
     <div className={style.container}>

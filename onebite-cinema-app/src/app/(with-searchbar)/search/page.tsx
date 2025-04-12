@@ -3,8 +3,8 @@ import MovieItem from "@/app/components/movie-item";
 import RecoMovieItemSkeleton from "@/app/skeleton/reco-movie-item-skeleton";
 
 import { MovieData } from "@/types";
-import { delay } from "@/app/util/delay";
 import { Suspense } from "react";
+import { delay } from "@/app/util/delay";
 
 async function SearchResult({
   searchParams,

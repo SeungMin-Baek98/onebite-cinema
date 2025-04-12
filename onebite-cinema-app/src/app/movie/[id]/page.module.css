@@ -1,56 +1,72 @@
 .container {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 50px;
 }
 
 .cover_img_container {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 20px;
-  padding: 20px;
-
+  height: 500px;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
 
-  box-shadow: 5px 5px 15px rgb(229, 9, 20, 0.7);
-  border-radius: 5px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(229, 9, 20, 0.5);
 
-  position: relative;
+  overflow: hidden;
 }
 
 .cover_img_container::before {
-  position: absolute;
   content: "";
+  position: absolute;
+  inset: 0;
 
-  top: 0px;
-  left: 0px;
-
-  width: 100%;
-  height: 100%;
-
-  border-radius: 5px;
   background-color: rgba(0, 0, 0, 0.7);
 }
 
 .cover_img_container img {
   z-index: 1;
-  max-height: 350px;
   height: 100%;
+  max-height: 500px;
+  object-fit: contain;
+  border-radius: 10px;
 }
 
 .title {
-  font-size: 30px;
-  font-weight: bold;
+  font-size: 38px;
+  font-weight: 800;
+  color: #ffffff;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+}
+
+.meta {
+  font-size: 15px;
+  color: #aaaaaa;
+  margin-top: 2px;
+  line-height: 1.5;
 }
 
 .subtitle {
-  font-size: 25px;
-  font-weight: bold;
+  font-size: 20px;
+  font-weight: 600;
+  color: #f25a5a;
+  margin-top: 30px;
+  margin-bottom: 10px;
 }
 
 .description {
-  line-height: 1.5;
+  font-size: 16px;
+  line-height: 1.75;
+  color: #e0e0e0;
+  white-space: pre-line;
+  background-color: rgba(255, 255, 255, 0.02);
+  padding: 15px 20px;
+  border-left: 4px solid rgba(255, 50, 50, 0.5);
+  border-radius: 4px;
 }
