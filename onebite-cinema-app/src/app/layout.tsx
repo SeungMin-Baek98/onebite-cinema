@@ -4,6 +4,7 @@ import Link from "next/link";
 import style from "./layout.module.css";
 
 import { Geist, Geist_Mono } from "next/font/google";
+
 import type { Metadata } from "next";
 
 const geistSans = Geist({
@@ -32,6 +33,7 @@ export default function RootLayout({
         <header className={style.header}>
           <Link href={"/"}>ONEBITE CINEMA</Link>
         </header>
+
         {children}
       </body>
     </html>
