@@ -1,5 +1,5 @@
 import style from "./page.module.css";
-import MovieItem from "@/app/components/movie-item";
+import MovieItem from "@/components/movie-item";
 import RecoMovieItemSkeleton from "@/app/skeleton/reco-movie-item-skeleton";
 
 import { MovieData } from "@/types";
@@ -23,8 +23,10 @@ async function SearchResult({
 
   const movie: MovieData[] = await response.json();
 
-  const filteredMovie = movie.filter((movie) =>
-    movie.title.replace(/ /g, "").includes(q as string)
+  const filteredMovie = movie.filter(
+    (movie) =>
+      movie.title.replace(/ /g, "").includes(q as string) ||
+      movie.title.includes(q as string)
   );
 
   return (

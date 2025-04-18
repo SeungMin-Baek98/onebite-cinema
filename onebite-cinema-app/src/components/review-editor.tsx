@@ -3,18 +3,22 @@
 import style from "./review-editor.module.css";
 
 import { useActionState } from "react";
-import { createMovieReview } from "@/actions/create-review-action";
+import { useRouter } from "next/navigation";
 
 import { ToastContainer, toast } from "react-toastify";
+import { createMovieReview } from "@/actions/create-review-action";
 
 export default function ReviewEditor({ movieId }: { movieId: string }) {
+  const router = useRouter();
   const [state, actionForm, isPending] = useActionState(
     async (_: any, formData: FormData) => {
       const result = await createMovieReview(_, formData);
 
       if (result?.state) {
         toast.success("리뷰 작성을 완료하였습니다.", {
+          position: "bottom-center",
           theme: "dark",
+          onClose: () => router.refresh(),
         });
       } else {
         toast.error(result?.error ?? "리뷰 작성에 실패하였습니다.", {

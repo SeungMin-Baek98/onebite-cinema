@@ -1,5 +1,5 @@
 import style from "./page.module.css";
-import MovieItem from "../components/movie-item";
+import MovieItem from "../../components/movie-item";
 import RecoMovieItemSkeleton from "../skeleton/reco-movie-item-skeleton";
 import AllMovieItemSkeleton from "../skeleton/all-movie-item-skeleton";
 

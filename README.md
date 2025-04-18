@@ -144,3 +144,13 @@ export default nextConfig;
 > CSS 수정
 >
 > - 무비 디테일 / 리뷰 목록 / 리뷰 작성
+
+# 2025.04.13
+
+> react-toastify 라이브러리를 활용한 토스트 리뷰 생성 및 삭제 토스트 알림 기능 구현 완료
+>
+> [react-toastify](https://www.npmjs.com/package/react-toastify)
+
+# 2025.04.18
+
+> Parallel Route + Intercepting Route 를 통한 영화 상세페이지를 Modal 컴포넌트 구현 완료

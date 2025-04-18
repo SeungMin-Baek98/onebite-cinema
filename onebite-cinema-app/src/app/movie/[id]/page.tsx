@@ -1,10 +1,10 @@
 import style from "./page.module.css";
 
-import ReviewItem from "@/app/components/review-item";
-import ReviewEditor from "@/app/components/review-editor";
-
 import { notFound } from "next/navigation";
 import { MovieData, ReviewData } from "@/types";
+
+import ReviewItem from "@/components/review-item";
+import ReviewEditor from "@/components/review-editor";
 
 export async function generateStaticParams() {
   try {

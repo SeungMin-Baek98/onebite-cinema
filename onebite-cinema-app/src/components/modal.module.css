@@ -1,0 +1,9 @@
+.modal {
+  width: 80%;
+  max-width: 650px;
+  background-color: black;
+}
+
+.modal::backdrop {
+  background: rgba(0, 0, 0, 0.7);
+}

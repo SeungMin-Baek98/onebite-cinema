@@ -13,7 +13,7 @@ export async function createMovieReview(_: any, formData: FormData) {
 
   try {
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_SERVER_URL}/review/12`,
+      `${process.env.NEXT_PUBLIC_API_SERVER_URL}/review`,
       { method: "POST", body: JSON.stringify({ movieId, content, author }) }
     );
 
@@ -21,7 +21,7 @@ export async function createMovieReview(_: any, formData: FormData) {
       return { state: false, error: "리뷰 작성 실패 (응답 오류)" };
     }
 
-    revalidateTag(`/review/${movieId}}`);
+    revalidateTag(`/movie/${movieId}`);
     return { state: true };
   } catch (error) {
     return { state: false, error: "리뷰 작성 실패 (서버 오류)" };
