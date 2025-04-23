@@ -11,7 +11,6 @@ async function SearchResult({
 }: {
   searchParams: Promise<{ q?: string }>;
 }) {
-  await delay(1500);
   const { q } = await searchParams;
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_API_SERVER_URL}/movie/search?q=${q}`

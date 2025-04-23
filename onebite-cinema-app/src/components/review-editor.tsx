@@ -2,11 +2,11 @@
 
 import style from "./review-editor.module.css";
 
+import { createMovieReview } from "@/actions/create-review-action";
+
 import { useActionState } from "react";
 import { useRouter } from "next/navigation";
-
-import { ToastContainer, toast } from "react-toastify";
-import { createMovieReview } from "@/actions/create-review-action";
+import { toast, ToastContainer } from "react-toastify";
 
 export default function ReviewEditor({ movieId }: { movieId: string }) {
   const router = useRouter();
@@ -18,7 +18,7 @@ export default function ReviewEditor({ movieId }: { movieId: string }) {
         toast.success("리뷰 작성을 완료하였습니다.", {
           position: "bottom-center",
           theme: "dark",
-          onClose: () => router.refresh(),
+          toastId: "review",
         });
       } else {
         toast.error(result?.error ?? "리뷰 작성에 실패하였습니다.", {
@@ -37,11 +37,11 @@ export default function ReviewEditor({ movieId }: { movieId: string }) {
         <input name="author" placeholder="작성자" disabled={isPending} />
         <button type="submit">{isPending ? "작성중 ..." : "작성하기"}</button>
       </div>
-
       <ToastContainer
         pauseOnHover={false}
         autoClose={1500}
         position="bottom-center"
+        hideProgressBar
         toastClassName="toast-blur"
       />
     </form>

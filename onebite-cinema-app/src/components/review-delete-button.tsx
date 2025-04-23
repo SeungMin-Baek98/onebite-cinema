@@ -1,7 +1,6 @@
 "use client";
 
 import { useActionState, useRef } from "react";
-import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 
 import { reviewDeleteButton } from "@/actions/delete-review-action";
@@ -14,7 +13,7 @@ export default function ReviewDeleteButton({
   movieId: number;
 }) {
   const formRef = useRef<HTMLFormElement>(null);
-  const router = useRouter();
+
   const [state, formAction, isPending] = useActionState(
     async (_: any, formData: FormData) => {
       const result = await reviewDeleteButton(_, formData);
@@ -23,7 +22,7 @@ export default function ReviewDeleteButton({
         toast.success("리뷰가 성공적으로 삭제되었습니다!", {
           position: "bottom-center",
           theme: "dark",
-          onClose: () => router.refresh(),
+          toastId: "review",
         });
       } else {
         toast.error(result.error ?? "리뷰 삭제에 실패하였습니다.", {

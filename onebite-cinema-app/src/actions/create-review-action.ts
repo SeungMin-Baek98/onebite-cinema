@@ -21,7 +21,7 @@ export async function createMovieReview(_: any, formData: FormData) {
       return { state: false, error: "리뷰 작성 실패 (응답 오류)" };
     }
 
-    revalidateTag(`/movie/${movieId}`);
+    revalidateTag(`/review-${movieId}`);
     return { state: true };
   } catch (error) {
     return { state: false, error: "리뷰 작성 실패 (서버 오류)" };

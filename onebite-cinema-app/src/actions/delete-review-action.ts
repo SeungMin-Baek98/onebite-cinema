@@ -20,8 +20,9 @@ export async function reviewDeleteButton(_: any, formData: FormData) {
       return { state: false, error: "삭제 요청이 실패했습니다." };
     }
 
-    revalidateTag(`/movie/${movieId}`);
-    return { state: true };
+    revalidateTag(`/review-${movieId}`);
+
+    return { state: true, error: "" };
   } catch (error) {
     return {
       state: false,

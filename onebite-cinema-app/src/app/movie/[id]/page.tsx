@@ -1,10 +1,11 @@
 import style from "./page.module.css";
 
-import { notFound } from "next/navigation";
-import { MovieData, ReviewData } from "@/types";
-
-import ReviewItem from "@/components/review-item";
 import ReviewEditor from "@/components/review-editor";
+import ReviewList from "@/components/review-list";
+
+import { MovieData } from "@/types";
+
+import { notFound } from "next/navigation";
 
 export async function generateStaticParams() {
   try {
@@ -70,26 +71,6 @@ async function MovieDetail({ movieId }: { movieId: string }) {
       <div className={style.meta}>{company}</div>
       <h2 className={style.subtitle}>{subTitle}</h2>
       <p className={style.description}>{description}</p>
-    </section>
-  );
-}
-
-async function ReviewList({ movieId }: { movieId: string }) {
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_SERVER_URL}/review/movie/${movieId}`,
-    { next: { tags: [`/movie/${movieId}`] } }
-  );
-
-  if (!response.ok) {
-    throw new Error(`Review fetch failed!! ${response.statusText}`);
-  }
-
-  const reviews: ReviewData[] = await response.json();
-  return (
-    <section>
-      {reviews.map((review) => (
-        <ReviewItem key={review.id} {...review} />
-      ))}
     </section>
   );
 }
